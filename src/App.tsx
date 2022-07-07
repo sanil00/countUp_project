@@ -1,36 +1,127 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+// import logo_normal from './logo.svg';
+// import logo_main from 'public/assets/triple2x.png'
 import './css/App.css';
 import styled from 'styled-components';
+import CountUp from './CountUp';
 
 const Container = styled.div`
   display:flex;
   flex-direction:column;
+  width:100%;
+  height:100%;
 `
-const SectionContainer = styled.div`
+const AwardContainer = styled.div`
   display:flex;
-`;
-const SectionContainer__grid = styled.div`
+  justify-content:center;
+  height:552px;
+`
+const AwardContainer__grid = styled.div`
   display:grid;
+  grid-template-columns: 600px 600px;
+  grid-template-rows: 300px auto;
   width:1200px;
-`;
-const Section_Container__img = styled.div`
 `
-const Section_Container__number = styled.div`
+const Award_Container__img = styled.div`
+  grid-row: 1 / span 2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+
 `
-const Section_Container__award = styled.div`
+const Award__Img = styled.img.attrs({
+  src: process.env.PUBLIC_URL+'/assets/triple2x.png'
+})`
+width:400px;
+height:338px;
+`
+const AwardText = styled.div`
+font-family: sans-serif;
+color: rgba(58, 58, 58, 0.7);
+position:absolute;
+bottom:145px;
+font-size: 15px;
+
+`
+const Award_Container__number = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content:end;
+  padding-left: 90px;
+  `
+const Award__number = styled.div`
+  display:flex;
+  font-size: 36px;
+  letter-spacing: -1px;
+  color: rgb(58, 58, 58);
+  font-family: sans-serif;
+  margin-bottom:20px;
+
+`
+const Award_Container__award = styled.div`
+  display:flex;
+  justify-self : center;
+  justify-content:space-around;
+  width:550px;
+  height: 80px;
+  padding-left: 80px;
+`
+const Award_Container__award_box = styled.div`
+  display:flex;
+  width: 250px;
+  align-items: center;
+  
+  
+`
+const Award__textimage_google = styled.img.attrs({
+  src: process.env.PUBLIC_URL+'/assets/play-store2x.png'
+})`
+  height:54px;
+`
+const Award__textimage_apple = styled.img.attrs({
+  src: process.env.PUBLIC_URL+'/assets/badge-apple4x.png'
+})`
+  height:54px;
+`
+const Award__text = styled.div`
+  display: flex;
+  justify-self: flex-start;
+  font-size:14px;
+  color: rgba(58, 58, 58, 0.8);
+  font-weight: bold;
+  line-height: 22px;
+  padding-left: 10px;
 `
 
-function App() {
+const App = () => {
+
   return (
     <Container className="App">
-      <SectionContainer>
-        <SectionContainer__grid>
-          <Section_Container__img></Section_Container__img>
-          <Section_Container__number></Section_Container__number>
-          <Section_Container__award></Section_Container__award>
-        </SectionContainer__grid>
-      </SectionContainer>
+      <AwardContainer>
+        <AwardContainer__grid>
+          <Award_Container__img>
+            <Award__Img/>
+            <AwardText>2021년 12월 기준</AwardText>
+          </Award_Container__img>
+          <Award_Container__number>
+            <Award__number><CountUp startNum={0} lastNum={700} duration={100} word={'명'} />의 여행자</Award__number>
+            <Award__number><CountUp startNum={0} lastNum={450} duration={200} word={'개'}/>의 여행 리뷰</Award__number>
+            <Award__number><CountUp startNum={0} lastNum={100} duration={300} word={'개'}/>의 여행 일정</Award__number>
+          </Award_Container__number>
+          <Award_Container__award>
+            <Award_Container__award_box>
+              <Award__textimage_google/>
+              <Award__text>2018 구글 플레이스토어<br/> 올해의 앱 최우수상 수상</Award__text>
+            </Award_Container__award_box>
+            <Award_Container__award_box>
+              <Award__textimage_apple/>
+              <Award__text>2018 애플 앱스토어<br/> 오늘의 여행앱 선정</Award__text>
+            </Award_Container__award_box>
+          </Award_Container__award>
+        </AwardContainer__grid>
+      </AwardContainer>
     </Container>
   );
 }
