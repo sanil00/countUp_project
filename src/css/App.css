@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+
