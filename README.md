@@ -4,7 +4,7 @@
     2. git 설치        https://git-scm.com/
     3. 시작 프로그램에서 git bash 실행후
     4. cd c:// 입력
-    5. git clone git@github.com:sanil00/countUp_project.git 입력
+    5. git clone git@github.com:sanil00/countUp_project.git 입력 (bash에서는 복사한 텍스트를 insert로 넣을수있습니다.)
     6. cd countUp_project 입력
     7. npm install 입력
     8. npm start 입력
