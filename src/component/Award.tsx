@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Props } from '../routes/Home';
-import CountUpCSS from './CountUpCSS';
+import CountUpCSS from '../hook/CountUpCSS';
 import CountUpReact from '../hook/CountUpReact';
 
 const Up = keyframes`
@@ -27,7 +27,7 @@ const AwardContainer__grid = styled.div`
     grid-template-rows: 300px auto;
     width:1200px;
 `
-const Award_Container__img = styled.div`
+const AwardContainer_Img = styled.div`
     grid-row: 1 / span 2;
     display:flex;
     flex-direction:column;
@@ -36,20 +36,20 @@ const Award_Container__img = styled.div`
     position:relative;
     animation:${Up} 2s;
 `
-const Award__Img = styled.img.attrs({
+const Award_Img__img = styled.img.attrs({
     src: process.env.PUBLIC_URL+'/assets/triple2x.png'
     })`
     width:400px;
     height:338px;
 `
-const AwardText = styled.div`
+const Award_Img__text = styled.div`
     font-family: sans-serif;
     color: rgba(58, 58, 58, 0.7);
     position:absolute;
     bottom:145px;
     font-size: 15px;
 `
-const Award_Container__number = styled.div`
+const AwardContainer_Number = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:end;
@@ -57,7 +57,7 @@ const Award_Container__number = styled.div`
     animation:${Up} 0.8s;
 
 `
-const Award__number = styled.div`
+const Award_Number__number = styled.div`
     display:flex;
     font-size: 36px;
     letter-spacing: -1px;
@@ -65,7 +65,7 @@ const Award__number = styled.div`
     font-family: sans-serif;
     margin-bottom:20px;
 `
-const Award_Container__award = styled.div`
+const AwardContainer_Award = styled.div`
     display:flex;
     justify-self : center;
     justify-content:space-around;
@@ -74,22 +74,22 @@ const Award_Container__award = styled.div`
     padding-left: 80px;
     animation:${Up} 0.9s;
 `
-const Award_Container__award_box = styled.div`
+const Award_Award_box = styled.div`
     display:flex;
     width: 250px;
     align-items: center;
 `
-const Award__textimage_google = styled.img.attrs({
+const Award_Award__img_google = styled.img.attrs({
     src: process.env.PUBLIC_URL+'/assets/play-store2x.png'
     })`
     height:54px;
 `
-const Award__textimage_apple = styled.img.attrs({
+const Award_Award__img_apple = styled.img.attrs({
     src: process.env.PUBLIC_URL+'/assets/badge-apple4x.png'
     })`
     height:54px;
 `
-const Award__text = styled.div`
+const Award_Award__text = styled.div`
     display: flex;
     justify-self: flex-start;
     font-size:14px;
@@ -109,39 +109,39 @@ const Award = (props:Props['props']) => {
     return (
         <AwardContainer>
           <AwardContainer__grid>
-            <Award_Container__img>
-                <Award__Img/>
-              <AwardText>2021년 12월 기준</AwardText>
-            </Award_Container__img>
-            <Award_Container__number>
+            <AwardContainer_Img>
+                <Award_Img__img/>
+              <Award_Img__text>2021년 12월 기준</Award_Img__text>
+            </AwardContainer_Img>
+            <AwardContainer_Number>
             {type === 'CSS' ?
               ( 
                 <>
-                  <Award__number><CountUpCSS startNum={0} lastNum={700} duration={2000} word={'명'} />의 여행자{type}</Award__number>
-                  <Award__number><CountUpCSS startNum={0} lastNum={450} duration={2000} word={'개'}/>의 여행 리뷰</Award__number>
-                  <Award__number><CountUpCSS startNum={0} lastNum={100} duration={2000} word={'개'}/>의 여행 일정</Award__number>
+                  <Award_Number__number><CountUpCSS startNum={0} lastNum={700} duration={2000} word={'명'} />의 여행자</Award_Number__number>
+                  <Award_Number__number><CountUpCSS startNum={0} lastNum={100} duration={2000} word={'개'}/>의 여행 리뷰</Award_Number__number>
+                  <Award_Number__number><CountUpCSS startNum={0} lastNum={470} duration={2000} word={'개'}/>의 여행 일정</Award_Number__number>
                 </>
               )
             :
               (
                 <>
-                  <Award__number><CountUpReact startNum={0} lastNum={700} duration={2000} word={'명'} />의 여행자{type}</Award__number>
-                  <Award__number><CountUpReact startNum={0} lastNum={450} duration={2000} word={'개'}/>의 여행 리뷰</Award__number>
-                  <Award__number><CountUpReact startNum={0} lastNum={100} duration={2000} word={'개'}/>의 여행 일정</Award__number>
+                  <Award_Number__number><CountUpReact startNum={0} lastNum={700} duration={2000} word={'명'} />의 여행자</Award_Number__number>
+                  <Award_Number__number><CountUpReact startNum={0} lastNum={100} duration={2000} word={'개'}/>의 여행 리뷰</Award_Number__number>
+                  <Award_Number__number><CountUpReact startNum={0} lastNum={470} duration={2000} word={'개'}/>의 여행 일정</Award_Number__number>
                 </>
               )
             }
-            </Award_Container__number>
-            <Award_Container__award>
-              <Award_Container__award_box>
-                <Award__textimage_google/>
-                <Award__text>2018 구글 플레이스토어<br/> 올해의 앱 최우수상 수상</Award__text>
-              </Award_Container__award_box>
-              <Award_Container__award_box>
-                <Award__textimage_apple/>
-                <Award__text>2018 애플 앱스토어<br/> 오늘의 여행앱 선정</Award__text>
-              </Award_Container__award_box>
-            </Award_Container__award>
+            </AwardContainer_Number>
+            <AwardContainer_Award>
+              <Award_Award_box>
+                <Award_Award__img_google/>
+                <Award_Award__text>2018 구글 플레이스토어<br/> 올해의 앱 최우수상 수상</Award_Award__text>
+              </Award_Award_box>
+              <Award_Award_box>
+                <Award_Award__img_apple/>
+                <Award_Award__text>2018 애플 앱스토어<br/> 오늘의 여행앱 선정</Award_Award__text>
+              </Award_Award_box>
+            </AwardContainer_Award>
           </AwardContainer__grid>
         </AwardContainer>
     );

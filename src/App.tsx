@@ -1,11 +1,10 @@
 import React from 'react';
-import './css/App.css';
 import Home from './routes/Home';
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './component/Header';
 import Footer from './component/Footer';
 
-const App = () => {
+const App= () => {
   return (
   <BrowserRouter>
       <Header/>
