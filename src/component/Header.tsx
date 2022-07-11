@@ -1,13 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 import Navigation from "./Navigation";
 
+const HeaderContainer = styled.header`
+
+`
 
 
 const Header = () => {
     return (
-    <header>
+    <HeaderContainer>
         <Navigation />
-    </header>
+    </HeaderContainer>
   );
 }
 

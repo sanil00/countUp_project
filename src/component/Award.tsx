@@ -1,12 +1,21 @@
 
 import React, { useEffect, useState } from 'react';
-import CountUp from './CountUpCSS';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Props } from '../routes/Home';
-import { truncateSync } from 'fs';
 import CountUpCSS from './CountUpCSS';
-import CountUpReact from './CountUpReact';
+import CountUpReact from '../hook/CountUpReact';
 
+const Up = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+`
 const AwardContainer = styled.div`
     display:flex;
     justify-content:center;
@@ -25,6 +34,7 @@ const Award_Container__img = styled.div`
     align-items:center;
     justify-content:center;
     position:relative;
+    animation:${Up} 2s;
 `
 const Award__Img = styled.img.attrs({
     src: process.env.PUBLIC_URL+'/assets/triple2x.png'
@@ -44,7 +54,8 @@ const Award_Container__number = styled.div`
     flex-direction:column;
     justify-content:end;
     padding-left: 90px;
-    transform:translate()
+    animation:${Up} 0.8s;
+
 `
 const Award__number = styled.div`
     display:flex;
@@ -61,6 +72,7 @@ const Award_Container__award = styled.div`
     width:550px;
     height: 80px;
     padding-left: 80px;
+    animation:${Up} 0.9s;
 `
 const Award_Container__award_box = styled.div`
     display:flex;
@@ -98,7 +110,7 @@ const Award = (props:Props['props']) => {
         <AwardContainer>
           <AwardContainer__grid>
             <Award_Container__img>
-              <Award__Img/>
+                <Award__Img/>
               <AwardText>2021년 12월 기준</AwardText>
             </Award_Container__img>
             <Award_Container__number>

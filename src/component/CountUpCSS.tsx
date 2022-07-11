@@ -20,7 +20,7 @@ interface CountProps {
     `
     const CountUp_Box = styled.div`
       counter-reset: num var(--num);
-      font: 800 40px system-ui;
+      font-weight:bold;
       animation: ${countType} ${duration/1000}s cubic-bezier(0.000, 1.055, 0.000, 0.995);
       animation-fill-mode: forwards;
         &:before {
