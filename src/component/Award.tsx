@@ -1,7 +1,12 @@
 
-import React from 'react';
-import CountUp from './CountUp';
+import React, { useEffect, useState } from 'react';
+import CountUp from './CountUpCSS';
 import styled from 'styled-components';
+import { Props } from '../routes/Home';
+import { truncateSync } from 'fs';
+import CountUpCSS from './CountUpCSS';
+import CountUpReact from './CountUpReact';
+
 const AwardContainer = styled.div`
     display:flex;
     justify-content:center;
@@ -81,7 +86,13 @@ const Award__text = styled.div`
     line-height: 22px;
     padding-left: 10px;
 `
-const Award = () => {
+
+
+const Award = (props:Props['props']) => {
+  const [type,setType] = useState(props.id)
+    useEffect(()=>{
+      setType(props.id)
+    },[props])
 
     return (
         <AwardContainer>
@@ -91,9 +102,23 @@ const Award = () => {
               <AwardText>2021년 12월 기준</AwardText>
             </Award_Container__img>
             <Award_Container__number>
-              <Award__number><CountUp startNum={0} lastNum={700} duration={2000} word={'명'} />의 여행자</Award__number>
-              <Award__number><CountUp startNum={0} lastNum={450} duration={2000} word={'개'}/>의 여행 리뷰</Award__number>
-              <Award__number><CountUp startNum={0} lastNum={100} duration={2000} word={'개'}/>의 여행 일정</Award__number>
+            {type === 'CSS' ?
+              ( 
+                <>
+                  <Award__number><CountUpCSS startNum={0} lastNum={700} duration={2000} word={'명'} />의 여행자{type}</Award__number>
+                  <Award__number><CountUpCSS startNum={0} lastNum={450} duration={2000} word={'개'}/>의 여행 리뷰</Award__number>
+                  <Award__number><CountUpCSS startNum={0} lastNum={100} duration={2000} word={'개'}/>의 여행 일정</Award__number>
+                </>
+              )
+            :
+              (
+                <>
+                  <Award__number><CountUpReact startNum={0} lastNum={700} duration={2000} word={'명'} />의 여행자{type}</Award__number>
+                  <Award__number><CountUpReact startNum={0} lastNum={450} duration={2000} word={'개'}/>의 여행 리뷰</Award__number>
+                  <Award__number><CountUpReact startNum={0} lastNum={100} duration={2000} word={'개'}/>의 여행 일정</Award__number>
+                </>
+              )
+            }
             </Award_Container__number>
             <Award_Container__award>
               <Award_Container__award_box>
