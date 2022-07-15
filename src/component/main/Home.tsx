@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import Award from '../component/Award'
+import AwardProps from '../../types/AwardProps'
+import Award from './Award'
+import Slider from './Slider'
 
 const Container = styled.div`
   display:flex;
@@ -10,20 +12,18 @@ const Container = styled.div`
   height:100%;
 `
 
-export interface Props{
-   props: {id:string|undefined} 
-}
 
 const Home = () => {
     const { id } = useParams();
     
-    const [props,setProps] = useState<Props['props']>({id})
+    const [props,setProps] = useState<AwardProps['props']>({id})
         useEffect(()=>{
             setProps({id})
         },[id])
     
     return (
         <Container className="App">
+            <Slider/>
             <Award {...props} />
         </Container>
     )
