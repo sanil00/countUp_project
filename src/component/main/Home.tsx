@@ -25,7 +25,7 @@ const Home = () => {
         <Container className="App">
             <Slider/>
             <Award {...props} />
-        </Container>
+        </Container> 
     )
 }
 
