@@ -5,24 +5,21 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade'
 import { Autoplay, EffectFade } from "swiper";
-
-interface ImgProps {
-    imgNum : string
-}
+import { ImgProps } from "../../types/typeProps";
 
 const SliderContainer = styled.div`
 
 `
 
-const SliderContainer__img = styled.img.attrs<ImgProps>(props => ({
+const SliderContainer__img = styled.img.attrs<ImgProps['imgProps']>(props => ({
     src:process.env.PUBLIC_URL+`/assets/${props.imgNum}.png`
-    }))<ImgProps>`
+    }))<ImgProps['imgProps']>`
     width:100%;
     height:100vh;
     object-fit: cover;
 `
 
-const Slider = () => {
+const Slider:React.FC = () => {
     return (
     <SliderContainer>
         <Swiper

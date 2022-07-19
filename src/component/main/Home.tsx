@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import AwardProps from '../../types/AwardProps'
+import {HomeProps} from '../../types/typeProps'
 import Award from './Award'
+import Menu from './Menu'
 import Slider from './Slider'
 
 const Container = styled.div`
@@ -13,10 +14,10 @@ const Container = styled.div`
 `
 
 
-const Home = () => {
+const Home:React.FC = () => {
     const { id } = useParams();
     
-    const [props,setProps] = useState<AwardProps['props']>({id})
+    const [props,setProps] = useState<HomeProps['props']>({id})
         useEffect(()=>{
             setProps({id})
         },[id])
@@ -24,6 +25,7 @@ const Home = () => {
     return (
         <Container className="App">
             <Slider/>
+            <Menu />
             <Award {...props} />
         </Container> 
     )

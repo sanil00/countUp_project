@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import CountUpCSS from '../../hook/CountUpCSS';
 import CountUpReact from '../../hook/CountUpReact';
-import AwardProps from '../../types/AwardProps'
+import {AwardProps} from '../../types/typeProps'
 
 const Up = keyframes`
   from {
@@ -100,7 +100,7 @@ const Award_Award__text = styled.div`
 `
 
 
-const Award = (props:AwardProps['props']) => {
+const Award:React.FC<AwardProps['props']> = (props:AwardProps['props']) => {
   const [type,setType] = useState(props.id)
     useEffect(()=>{
       setType(props.id)

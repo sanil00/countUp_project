@@ -5,7 +5,7 @@ import Header from './component/layout/Header';
 import Footer from './component/layout/Footer';
 import './css/App.css'
 
-const App= () => {
+const App:React.FC = () => {
   return (
   <BrowserRouter>
       <Header/>
