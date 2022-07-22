@@ -12,7 +12,7 @@ const SliderContainer = styled.div`
 `
 
 const SliderContainer__img = styled.img.attrs<ImgProps['imgProps']>(props => ({
-    src:process.env.PUBLIC_URL+`/assets/${props.imgNum}.png`
+    src:process.env.PUBLIC_URL+`/assets/main/${props.imgNum}.png`
     }))<ImgProps['imgProps']>`
     width:100%;
     height:100vh;

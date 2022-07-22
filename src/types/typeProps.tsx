@@ -2,6 +2,11 @@ export interface HomeProps{
     props: {id?:string} 
 }
 
+export interface CardProps{
+    imgProps: {imgNum:string, column:{startColumn:number,lastColumn:number},row:{startRow:number,lastRow:number}},
+    textProps: {column:{startColumn:number,lastColumn:number},row:{startRow:number,lastRow:number}}, 
+}
+
 export interface MenuProps{
     imgProps: {imgNum:string, column:{startColumn:number,lastColumn:number},row:{startRow:number,lastRow:number}},
     textProps: {column:{startColumn:number,lastColumn:number},row:{startRow:number,lastRow:number}}, 

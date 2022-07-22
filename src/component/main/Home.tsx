@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import {HomeProps} from '../../types/typeProps'
 import Award from './Award'
+import Card from './Card'
 import Menu from './Menu'
 import Slider from './Slider'
 
@@ -25,6 +26,7 @@ const Home:React.FC = () => {
     return (
         <Container className="App">
             <Slider/>
+            <Card />
             <Menu />
             <Award {...props} />
         </Container> 
